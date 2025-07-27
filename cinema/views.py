@@ -8,7 +8,8 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
 from cinema.models import Movie, Genre, Actor, CinemaHall
-from cinema.serializers import MovieSerializer, GenreSerializer, ActorSerializer, CinemaSerializer
+from cinema.serializers import MovieSerializer, GenreSerializer, \
+    ActorSerializer, CinemaSerializer
 
 
 class GenreListCreateAPIView(APIView):
@@ -23,7 +24,10 @@ class GenreListCreateAPIView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class GenreDetailAPIView(APIView):
