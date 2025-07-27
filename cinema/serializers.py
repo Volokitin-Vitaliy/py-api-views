@@ -14,18 +14,18 @@ class GenreSerializer(serializers.ModelSerializer):
         fields = ["id", "name"]
 
 
-class CinemaSerializer(serializers.ModelSerializer):
+class CinemaHallSerializer(serializers.ModelSerializer):
     class Meta:
         model = CinemaHall
         fields = ["id", "name", "rows", "seats_in_row"]
 
 
-class MovieSerializer(serializers.Serializer):
+class MovieSerializer(serializers.ModelSerializer):
     actors = serializers.PrimaryKeyRelatedField(
         queryset=Actor.objects.all(),
         many=True
     )
-    gernes = serializers.PrimaryKeyRelatedField(
+    genres = serializers.PrimaryKeyRelatedField(
         queryset=Genre.objects.all(),
         many=True
     )
